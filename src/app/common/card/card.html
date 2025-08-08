@@ -5,10 +5,10 @@
       <button class="menu-btn">⋮</button>
       <div class="dropdown" [style.display]="dropdownOpen ? 'block' : 'none'">
         <ul>
-          <li>Add</li>
-          <li>Edit</li>
-          <li>View</li>
-          <li>Delete</li>
+          <li (click)="handleAction('add')">Add</li>
+          <li (click)="handleAction('edit')">Edit</li>
+          <li (click)="handleAction('view')">View</li>
+          <li (click)="handleAction('delete')">Delete</li>
         </ul>
       </div>
     </div>

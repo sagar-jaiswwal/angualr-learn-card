@@ -219,4 +219,23 @@ export class Cafirm {
     this.currentPage = 1;
     this.updatePaginatedCards();
   }
+  listView = true;
+  selectedCard: CardData | null = null;
+
+  onCardView(card: CardData) {
+    this.selectedCard = card;
+    this.listView = false;
+  }
+  backToList() {
+    this.selectedCard = null;
+    this.listView = true;
+  }
+  onCardAction(event: { type: string; data: any }) {
+    if (event.type === 'view') {
+      this.selectedCard = event.data;
+      this.listView = false;
+    }
+
+    // Add other logic for add/edit/delete if needed
+  }
 }

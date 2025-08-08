@@ -2,37 +2,21 @@
   <div class="breadcrumb">{{ currentPath }}</div>
   <div class="actions">
     <div class="search-box">
-      <input
-        type="text"
-        placeholder="Search by name, heading, city, ID..."
-        [(ngModel)]="searchTerm"
-        (input)="onSearchChange()"
-      />
+      <input type="text" placeholder="Search by name, heading, city, ID..." [(ngModel)]="searchTerm"
+        (input)="onSearchChange()" />
     </div>
     <button class="requested-btn">Requested</button>
   </div>
 </div>
 
 <div class="tabs">
-  <button
-    class="tab"
-    [class.active]="selectedTab === 'active'"
-    (click)="setTab('active')"
-  >
+  <button class="tab" [class.active]="selectedTab === 'active'" (click)="setTab('active')">
     Active
   </button>
-  <button
-    class="tab"
-    [class.active]="selectedTab === 'inactive'"
-    (click)="setTab('inactive')"
-  >
+  <button class="tab" [class.active]="selectedTab === 'inactive'" (click)="setTab('inactive')">
     Inactive
   </button>
-  <button
-    class="tab"
-    [class.active]="selectedTab === 'debarred'"
-    (click)="setTab('debarred')"
-  >
+  <button class="tab" [class.active]="selectedTab === 'debarred'" (click)="setTab('debarred')">
     Debarred
   </button>
 </div>
@@ -40,24 +24,63 @@
 <!-- Your card or other content below -->
 
 <!-- Below this, show your card component or list -->
+@if(listView){
+
 <div class="space">
   @for (card of paginatedCards; track card.id) {
   <div class="card-wrapper">
-    <app-card
-      [heading]="card.heading"
-      [name]="card.name"
-      [id]="card.id"
-      [number]="card.number"
-      [city]="card.city"
-      [state]="card.state"
-    ></app-card>
+    <app-card [heading]="card.heading" [name]="card.name" [id]="card.id" [number]="card.number" [city]="card.city"
+      [state]="card.state" [status]="card.status" (action)="onCardAction($event)"></app-card>
   </div>
   }
 </div>
+}
 
-<app-pagination
-  [totalItems]="filteredCards.length"
-  [pageSize]="pageSize"
-  [currentPage]="currentPage"
-  (pageChange)="onPageChange($event)"
-></app-pagination>
+@if(listView){
+
+<app-pagination [totalItems]="filteredCards.length" [pageSize]="pageSize" [currentPage]="currentPage"
+  (pageChange)="onPageChange($event)"></app-pagination>
+}
+
+@if (!listView && selectedCard) {
+<div class="details-container">
+  <button class="back-btn" (click)="backToList()">← Back to List</button>
+
+  <div class="detail-card">
+    <h2>{{ selectedCard.heading }}</h2>
+    <div class="horizontal-details">
+
+      <div class="form-field">
+        <label>Name:</label>
+        <input type="text" [value]="selectedCard.name" readonly />
+      </div>
+
+      <div class="form-field">
+        <label>ID:</label>
+        <input type="text" [value]="selectedCard.id" readonly />
+      </div>
+
+      <div class="form-field">
+        <label>Number:</label>
+        <input type="text" [value]="selectedCard.number" readonly />
+      </div>
+
+      <div class="form-field">
+        <label>City:</label>
+        <input type="text" [value]="selectedCard.city" readonly />
+      </div>
+
+      <div class="form-field">
+        <label>State:</label>
+        <input type="text" [value]="selectedCard.state" readonly />
+      </div>
+
+      <div class="form-field">
+        <label>Status:</label>
+        <input type="text" [value]="selectedCard.status" readonly />
+      </div>
+
+    </div>
+  </div>
+</div>
+}
