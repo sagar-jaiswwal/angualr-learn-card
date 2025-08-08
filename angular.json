@@ -31,6 +31,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/angualr-learn-card/",
               "budgets": [
                 {
                   "type": "initial",
@@ -43,7 +44,7 @@
                   "maximumError": "8kB"
                 }
               ],
-              "baseHref": "/angualr-learn-card/",
+
               "outputHashing": "all"
             },
             "development": {
