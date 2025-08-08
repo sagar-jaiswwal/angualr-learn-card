@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-header">
+    <span>{{ heading }}</span>
+    <div class="menu-container" (click)="toggleDropdown($event)">
+      <button class="menu-btn">⋮</button>
+      <div class="dropdown" [style.display]="dropdownOpen ? 'block' : 'none'">
+        <ul>
+          <li>Add</li>
+          <li>Edit</li>
+          <li>View</li>
+          <li>Delete</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-content-wrapper">
+    <div class="card-content">
+      <div class="field">
+        <span class="label">Name</span>
+        <span class="value">{{ name }}</span>
+      </div>
+      <div class="field">
+        <span class="label">ID</span>
+        <span class="value">{{ id }}</span>
+      </div>
+      <div class="field">
+        <span class="label">Number</span>
+        <span class="value">{{ number }}</span>
+      </div>
+      <div class="field">
+        <span class="label">City</span>
+        <span class="value">{{ city }}</span>
+      </div>
+      <div class="field">
+        <span class="label">State</span>
+        <span class="value">{{ state }}</span>
+      </div>
+    </div>
+  </div>
+</div>

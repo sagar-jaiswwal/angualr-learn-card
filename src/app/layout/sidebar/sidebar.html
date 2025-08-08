@@ -1,0 +1,19 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="sidebar-item"
+      >
+        <span class="icon">{{ item.icon }}</span>
+        <span class="label" *ngIf="!isCollapsed">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <button (click)="toggleSidebar()" class="toggle-btn">
+    {{ isCollapsed ? '▶' : '◀' }}
+  </button>
+</div>

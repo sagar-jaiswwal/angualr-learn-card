@@ -1,0 +1,10 @@
+.layout-wrapper {
+  display: flex;
+  min-height: calc(100vh - 120px); // header + footer
+}
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  background: #ecf0f1;
+}
