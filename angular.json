@@ -31,6 +31,7 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "dist/angular20_25/browser",
               "baseHref": "/angualr-learn-card/",
               "budgets": [
                 {
