@@ -5,7 +5,7 @@
       <input type="text" placeholder="Search by name, heading, city, ID..." [(ngModel)]="searchTerm"
         (input)="onSearchChange()" />
     </div>
-    <button class="requested-btn">Requested</button>
+    <button class="requested-btn" (click)="goToRequested()">Requested</button>
   </div>
 </div>
 

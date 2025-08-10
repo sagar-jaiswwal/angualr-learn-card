@@ -1,1 +1,97 @@
-<p>requested works!</p>
+<div class="container">
+    <!-- Left Card -->
+    <div class="card left-card">
+        <h2>CA Firm Request</h2>
+
+        <div class="file-section">
+            <span>{{ uploadedFileName || 'Uploaded_File.xlsx' }}</span>
+            <a href="/assets/files/Uploaded_Files.xlsx" download>Download Excel</a>
+
+            <button (click)="downloadExcel()">Download</button>
+        </div>
+
+        <div class="upload-box" (dragover)="onDragOver($event)" (drop)="onFileDrop($event)" (click)="fileInput.click()">
+            <p>Drag & Drop your Excel file here</p>
+            <p class="file-hint">Only .xls or .xlsx files allowed</p>
+            <input #fileInput type="file" accept=".xls,.xlsx" (change)="onFileSelect($event)" hidden>
+        </div>
+
+        <div class="upload-note">Upload only Excel file</div>
+
+        @if(uploadedFileName){
+
+        <div class="uploaded-file">
+            <p>Uploaded File: <strong>{{ uploadedFileName }}</strong></p>
+            <span (click)="removeUploadedFile()" class="remove-file">❌</span>
+        </div>
+        }
+    </div>
+
+    <!-- Right Card -->
+    <!-- <div class="card right-card">
+        <h2>Excel File Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>101</td>
+                    <td>Mumbai</td>
+                    <td>Maharashtra</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Jane Smith</td>
+                    <td>102</td>
+                    <td>Delhi</td>
+                    <td>Delhi</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Mark Lee</td>
+                    <td>103</td>
+                    <td>Pune</td>
+                    <td>Maharashtra</td>
+                </tr>
+            </tbody>
+        </table>
+    </div> -->
+    @if(excelData.length > 0){
+
+    <div class="card right-card">
+        <h2>Excel File Data</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (row of excelData; track $index) {
+                <tr>
+                    <td>{{ row['Sr No'] }}</td>
+                    <td>{{ row['Name'] }}</td>
+                    <td>{{ row['ID'] }}</td>
+                    <td>{{ row['City'] }}</td>
+                    <td>{{ row['State'] }}</td>
+                </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+    }
+</div>

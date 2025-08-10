@@ -238,4 +238,8 @@ export class Cafirm {
 
     // Add other logic for add/edit/delete if needed
   }
+
+  goToRequested() {
+    this.router.navigate(['/requested']); // Adjust path if your route is different
+  }
 }
